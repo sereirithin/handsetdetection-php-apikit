@@ -394,7 +394,14 @@ class HD3 {
 		$this->reply = array();
 		$this->rawreply = array();
 		$this->detectRequest = apache_request_headers();
-		$this->detectRequest['ipaddress'] = $_SERVER['REMOTE_ADDR'];
+        if ( isset ($_SERVER['REMOTE_ADDR']) )
+        {
+		    $this->detectRequest['ipaddress'] = $_SERVER['REMOTE_ADDR'];
+        }
+        else
+        {
+            $this->detectRequest['ipaddress'] = '127.0.0.1';
+        }
 		unset($this->detectRequest['Cookie']);
 	}
 	
