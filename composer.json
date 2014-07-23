@@ -1,5 +1,5 @@
 {
-    "name": "HandsetDetection/php-apikit",
+    "name": "handsetdetection/php-apikit",
     "description": "An handset detection service",
     "homepage": "https://github.com/HandsetDetection/php-apikit",
     "keywords": ["user-agent", "device", "detection"],
