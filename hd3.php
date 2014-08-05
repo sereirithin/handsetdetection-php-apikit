@@ -755,7 +755,7 @@ class HD3 {
 		
 		$success = false;
 		while($trys++ < $attempts && $success === false) {			
-			if ($this->debug) $this->__log("Connection attempt $trys");			
+			if ($this->debug) $this->__log("Connection attempt $trys");
 			$this->rawreply = $this->_post($this->config['api_server'], $url, $requestdata);			
 			if ($this->rawreply === false) {
 				$this->setError(299, "Error : Connection to $url Failed");
@@ -839,7 +839,7 @@ class HD3 {
             'opaque="'.$realm.'"'."\r\n";
 		$out .= "Content-length: " . strlen($jsondata) . "\r\n\r\n";
 		$out .= "$jsondata\r\n\r\n";
-		
+
 		if ($this->debug) $this->__log("Sending : $out");		
 		fputs($fp, $out);
 		
@@ -851,7 +851,7 @@ class HD3 {
 		 * we need to check for a timeout if the server doesn't send anything.
 		 */
 		$timeout_status = FALSE;
-		
+
 		stream_set_blocking ( $fp, 0 );
 		while ( ! feof( $fp )  and ! $timeout_status) {
 			$r = fgets($fp, 1024*25);
@@ -873,7 +873,7 @@ class HD3 {
 
 		fclose($fp); 
 
-   		$hunks = explode("\r\n\r\n",trim($reply));
+   		$hunks = explode("\r\n\r\n",$reply);
 		
    		if (!is_array($hunks) or count($hunks) < 2)
 			return $this->setError(299, "Error : Reply is too short.");
